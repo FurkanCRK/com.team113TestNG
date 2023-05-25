@@ -71,4 +71,50 @@ public class AutomationPage {
     @FindBy (xpath = "//a[text()='Continue']")
     public WebElement continButton;
 
+    @FindBy (xpath = "//*[text()=' Logged in as ']")
+    public WebElement oturumAcildiGoruntulendi;
+
+    @FindBy (xpath = "//ul[@class='address item box']")
+    public WebElement adresDetay;
+
+    @FindBy (xpath = "(//h2[@class='heading'])[1]")
+    public WebElement siparisInceleme;
+
+    @FindBy (xpath = "//textarea[@class='form-control']")
+    public WebElement aciklaBolumu;
+
+    @FindBy (xpath = "//a[@href='/payment']")
+    public WebElement PlaceOrder;
+
+    @FindBy (xpath = "//input[@class='form-control']")
+    public WebElement cartIsmi;
+
+    @FindBy (xpath = "//input[@name='card_number']")
+    public WebElement cartNumara;
+
+    @FindBy ( xpath = "//input[@name='cvc']")
+    public WebElement cvc;
+
+    @FindBy ( xpath = "//input[@name='expiry_month']")
+    public WebElement cartAy;
+
+    @FindBy ( xpath = "//input[@name='expiry_year']")
+    public WebElement cartYil;
+
+    @FindBy ( xpath = "//button[@data-qa='pay-button']")
+    public WebElement payButon;
+
+    @FindBy (xpath = "(//div[@class='alert-success alert'])[1]")
+    public WebElement basariMesaji;
+
+    @FindBy ( xpath = "//a[@href='/delete_account']")
+    public WebElement DeleteAccountButon;
+
+    @FindBy ( xpath = "//b[text()='Account Deleted!']")
+    public WebElement accountDeletedYazisi;
+
+    @FindBy ( xpath = "//a[text()='Continue']")
+    public WebElement devamButonu;
+
+
 }

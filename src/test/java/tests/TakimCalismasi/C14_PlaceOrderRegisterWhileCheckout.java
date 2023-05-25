@@ -26,7 +26,7 @@ public class C14_PlaceOrderRegisterWhileCheckout {
 
         // 3. Verify that home page is visible successfully
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(automationPage.autoHomePage.isDisplayed());
+        softAssert.assertTrue(automationPage.autoHomePage.isDisplayed(),"anasayfa goruntulenmedi");
 
         // 4. Add products to cart
         jse.executeScript("arguments[0].scrollIntoView();",automationPage.addCart);
@@ -38,7 +38,7 @@ public class C14_PlaceOrderRegisterWhileCheckout {
         automationPage.cartButton.click();
 
         // 6. Verify that cart page is displayed
-        softAssert.assertTrue(automationPage.shoppingPage.isDisplayed());
+        softAssert.assertTrue(automationPage.shoppingPage.isDisplayed(),"cart page gorunmedi");
 
         // 7. Click Proceed To Checkout
         automationPage.proceedToCheckout.click();
@@ -91,20 +91,61 @@ public class C14_PlaceOrderRegisterWhileCheckout {
                 .sendKeys(Keys.ENTER).perform();
 
         // 10. Verify 'ACCOUNT CREATED!' and click 'Continue' button
-        softAssert.assertTrue(automationPage.accountDisplayed.isDisplayed());
+        softAssert.assertTrue(automationPage.accountDisplayed.isDisplayed(),"account yazisi ayni degil");
         automationPage.continButton.click();
 
         // 11. Verify ' Logged in as username' at top
+        softAssert.assertTrue(automationPage.oturumAcildiGoruntulendi.isDisplayed(),"Oturum acildi goruntulendi");
+
         // 12. Click 'Cart' button
+        automationPage.cartButton.click();
+
         // 13. Click 'Proceed To Checkout' button
+        automationPage.proceedToCheckout.click();
+
         // 14. Verify Address Details and Review Your Order
+        softAssert.assertTrue(automationPage.adresDetay.isDisplayed(),"adres detaylari goruntulendi");
+        softAssert.assertTrue(automationPage.siparisInceleme.isDisplayed(),"siparis inceleme yanlis");
+
         // 15. Enter description in comment text area and click 'Place Order'
+        automationPage.aciklaBolumu.sendKeys("Hizli gönderirseniz sevinirim");
+        automationPage.PlaceOrder.click();
+
         // 16. Enter payment details: Name on Card, Card Number, CVC, Expiration date
+        automationPage.cartIsmi.sendKeys(faker.name().fullName());
+        automationPage.cartNumara.sendKeys(faker.business().creditCardNumber());
+        automationPage.cvc.sendKeys("123");
+        automationPage.cartAy.sendKeys("10");
+        automationPage.cartYil.sendKeys("2025");
+
         // 17. Click 'Pay and Confirm Order' button
+        automationPage.payButon.click();
+
         // 18. Verify success message 'Your order has been placed successfully!'
+        Driver.getDriver().navigate().back();
+
+        String expectedIcerik = "Your order has been placed successfully";
+        String actualIcerik = automationPage.basariMesaji.getText();
+        System.out.println(actualIcerik);
+
+        softAssert.assertEquals(actualIcerik,expectedIcerik,"siparis yazisi ayni degil");
+
+        Driver.getDriver().navigate().forward();
+
         // 19. Click 'Delete Account' button
+        automationPage.DeleteAccountButon.click();
+
         // 20. Verify 'ACCOUNT DELETED!' and click 'Continue' button
 
+        expectedIcerik = "ACCOUNT DELETED";
+        actualIcerik = automationPage.accountDeletedYazisi.getText();
+
+        softAssert.assertEquals(actualIcerik,expectedIcerik,"acoount yazisi ayni degil");
+
+        automationPage.devamButonu.click();
+
         softAssert.assertAll();
+
+        Driver.closeDriver();
     }
 }
