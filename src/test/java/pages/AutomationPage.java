@@ -116,5 +116,47 @@ public class AutomationPage {
     @FindBy ( xpath = "//a[text()='Continue']")
     public WebElement devamButonu;
 
+    @FindBy(xpath = "//input[@id='id_gender1']")
+    public WebElement erkekCinsiyetButon;
+
+    @FindBy(xpath = "//input[@type='password']")
+    public WebElement kayitSifreKutusu;
+
+    @FindBy(xpath = "//select[@data-qa='days']")
+    public WebElement dogumGun;
+
+    @FindBy(xpath = "//select[@data-qa='months']")
+    public WebElement dogumAy;
+
+    @FindBy(xpath = "//select[@data-qa='years']")
+    public WebElement dogumYil;
+
+    @FindBy(xpath = "//input[@id='first_name']")
+    public WebElement adressIlkIsim;
+
+    @FindBy(xpath = "//input[@id='last_name']")
+    public WebElement adressSoyIsim;
+
+    @FindBy(xpath = "//input[@id='address1']")
+    public WebElement address;
+
+    @FindBy(xpath = "//select[@id='country']")
+    public WebElement ulkeSecimi;
+
+    @FindBy(xpath = "//input[@id='state']")
+    public WebElement state;
+
+    @FindBy(xpath = "//input[@id='city']")
+    public WebElement city;
+
+    @FindBy(xpath = "//input[@id='zipcode']")
+    public WebElement zipCode;
+
+    @FindBy(xpath = "//input[@id='mobile_number']")
+    public WebElement telNO;
+
+    @FindBy(xpath = "//button[@data-qa='create-account']")
+    public WebElement createAccountButonu;
+
 
 }
